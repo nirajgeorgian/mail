@@ -1,0 +1,36 @@
+<% layout('layout') %>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+                <form action="" role="form" method="post">
+                    <h2> Reset your password here </h2>
+                    <hr class="colorgraph">
+                    <div class="row">
+                        <% if (error.length > 0) { %>
+                            <div class="col-sm-12 col-xs-12 col-lg-12">
+                                <div class="alert alert-danger alert-dismissible text-center" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <strong>Warning!</strong>
+                                    <%= error %>
+                                </div>
+                            </div>
+                            <% } %>
+                                <div class="form-group">
+                                    <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Type your email " tabindex="1">
+                                </div>
+                                <!-- <div class="form-group">
+              <input type="password" name="password_a" id="password_a" class="form-control input-lg" placeholder="Again type your Password" tabindex="1">
+        </div> -->
+                                <hr class="colorgraph">
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-6"><input type="submit" name="login" value="Reset" class="btn btn-primary btn-block btn-lg" tabindex="3"></div>
+                                    <div class="col-xs-12 col-md-6"><a href="/login" class="btn btn-default btn-block btn-lg">Login</a></div>
+                                </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="test">
+
+    </div>

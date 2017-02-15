@@ -1,0 +1,70 @@
+<% layout('layout') -%>
+<div class="container">
+  <div class="row">
+    <% if (success.length > 0 ) { %>
+    <div class="col-sm-12 col-xs-12 col-lg-12">
+      <div class="alert alert-success alert-dismissible text-center" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <strong>Warning!</strong> <%= success %>
+      </div>
+    </div>
+    <% } %>
+
+      <!-- Error status message -->
+    <% if (failure.length > 0 ) { %>
+    <div class="col-sm-12 col-xs-12 col-lg-12">
+      <div class="alert alert-danger alert-dismissible text-center" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <strong>Warning!</strong> <%= failure %>
+      </div>
+    </div>
+    <% } %>
+</div>
+<div class="text-center">
+  <h2>Mail Account customer's</h2>
+  <p>Send them mail as per your requirements</p>
+</div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>First Name</th>
+        <th>Lat Name</th>
+        <th>Email</th>
+        <th>Option's</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for(var i = 0; i < users.length; i++) { %>
+      <tr>
+        <td class="users_data"><%= i+1 %></td>
+        <td class="users_data"><%= users[i].first_name %></td>
+        <td class="users_data"><%= users[i].last_name %></td>
+        <td class="users_data"><a href="/user/<%= users[i].username %>"><%= users[i].email %></a></td>
+        <td>
+          <form action="/api/tags" method="post" id="tags">
+            <span class="form-group">
+            <input type="text" class="form-control" placeholder="Add Taags" name="tagList" id="tag">
+            <input type="hidden" id="email" name="email" value="<%= users[i].email %>">
+            </span>
+          </form>
+        </td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+</div>
+
+<div class="text-center">
+  <ul class="pagination text-center">
+    <li>
+      <% for(var i = 0; i <=  pages; i++) { %>
+        <% if(i === 0) { %>
+          <li><a href="/"><%= i+1 %></a></li>
+        <% } else { %>
+          <li><a href="/users/<%= i %>"><%= i+1 %></a></li>
+        <% } %>
+        <% } %>
+      </li>
+    </ul>
+</div>

@@ -1,0 +1,62 @@
+<%- layout('layout') %>
+    <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3"><br>
+            <% if (success.length > 0 ) { %>
+            <div class="col-sm-12 col-xs-12 col-lg-12">
+              <div class="alert alert-success alert-dismissible text-center" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <strong>Warning!</strong> <%= success %>
+              </div>
+            </div>
+            <% } %>
+
+              <!-- Error status message -->
+            <% if (failure.length > 0 ) { %>
+            <div class="col-sm-12 col-xs-12 col-lg-12">
+              <div class="alert alert-danger alert-dismissible text-center" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <strong>Warning!</strong> <%= failure %>
+              </div>
+            </div>
+            <% } %>
+            <br>
+            <form action="/tags/add" method="post" id="tagsAdd">
+              <span class="form-group">
+              <input type="text" class="form-control" placeholder="Add Taags" name="tagList" id="tag">
+              <input type="hidden" id="email" name="email" value="">
+              </span>
+            </form>
+          </div>
+          <br><br>
+          <% if (!tags == '') { %>
+            <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3 tagData">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Tag</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                        <tbody>
+                            <% for(var i = 1; i < tags.length; i++) { %>
+                                <tr>
+                                    <td>
+                                        <%= i %>
+                                    </td>
+                                    <td>
+                                        <%= tags[i] %>
+                                    </td>
+                                    <td><a type="button" name="edit" class="btn btn-default" href="/tags/edit/<%= tags[i] %>">Edit</a></td>
+                                    <td><a type="button" name="Delete" class="btn btn-danger" href="/tags/delete/<%= tags[i] %>">Delete</a></td>
+                                </tr>
+                                <% } %>
+                        </tbody>
+                    </thead>
+                </table>
+            </div>
+            <% } %>
+        </div>
+    </div>
+<%= tags %>
